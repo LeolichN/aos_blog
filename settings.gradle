@@ -1,0 +1,5 @@
+rootProject.name = 'AosBlog'
+
+includeBuild './aos-book'
+includeBuild './aos-core'
+

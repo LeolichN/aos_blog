@@ -1,0 +1,11 @@
+rootProject.name = 'aos-book'
+
+include 'book-repo'
+include 'book-domain'
+include 'book-application'
+include 'book-infrastructure'
+include 'book-interface'
+include 'book-starter'
+
+includeBuild '../aos-core'
+
