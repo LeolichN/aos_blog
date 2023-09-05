@@ -1,22 +1,34 @@
 package com.aos.interfaces.impl;
 
-import com.aos.application.dto.BookAddDTO;
+import com.aos.repo.dto.BookAddDTO;
 import com.aos.application.service.IBookApplication;
-import com.aos.core.response.BaseResponse;
+import com.aos.core.response.DataResponse;
 import com.aos.interfaces.IBookInterface;
+import com.aos.repo.dto.BookQueryDTO;
+import com.aos.repo.entity.Book;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Component;
 
-@RequestMapping("/book")
-@RestController
+@Component
+@Tag(name = "账本")
 public class BookInterface implements IBookInterface {
     @Autowired
     private IBookApplication bookApplication;
 
     @Override
-    public BaseResponse handleAdd(BookAddDTO bookAddDTO) {
-        bookApplication.addBook(bookAddDTO);
-        return new BaseResponse();
+    public DataResponse<Book> handleAdd(BookAddDTO bookAddDTO) {
+        return bookApplication.addBook(bookAddDTO);
+    }
+
+    @Override
+    public DataResponse<Book> handleGet(Integer id) {
+        return null;
+    }
+
+    @Override
+    public DataResponse<Book> handleAdd(BookQueryDTO bookQueryDTO, Pageable page) {
+        return null;
     }
 }

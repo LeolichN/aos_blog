@@ -25,11 +25,11 @@ public class Tag {
     private Tag parent;
 
     @Column(nullable = false)
-    private Boolean canExpense; //是否可支出
+    private Boolean canExpense;
 
     @Column(nullable = false)
-    private Boolean canIncome; //是否可收入
+    private Boolean canIncome;
 
     @Column(nullable = false)
-    private Boolean canTransfer; //是否可转账
+    private Boolean canTransfer;
 }

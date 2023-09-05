@@ -1,8 +1,10 @@
 package com.aos.application.service;
 
-import com.aos.application.dto.BookAddDTO;
+import com.aos.repo.dto.BookAddDTO;
+import com.aos.core.response.DataResponse;
+import com.aos.repo.entity.Book;
 
 
 public interface IBookApplication {
-    void addBook(BookAddDTO bookAddDTO);
+    DataResponse<Book> addBook(BookAddDTO bookAddDTO);
 }

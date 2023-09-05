@@ -24,9 +24,9 @@ public class Payee {
     private String notes;
 
     @Column(nullable = false)
-    private Boolean canExpense; //是否可支出
+    private Boolean canExpense;
 
     @Column(nullable = false)
-    private Boolean canIncome; //是否可收入
+    private Boolean canIncome;
 
 }

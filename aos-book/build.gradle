@@ -53,8 +53,10 @@ configure(project(':book-repo')) {
         api "org.springframework.boot:spring-boot-starter-data-jpa:3.1.2"
         annotationProcessor "jakarta.persistence:jakarta.persistence-api:3.1.0-RC1"
         annotationProcessor "jakarta.annotation:jakarta.annotation-api:2.1.1"
-        implementation "org.springframework.boot:spring-boot-starter-validation:3.0.1"
         runtimeOnly 'com.mysql:mysql-connector-j:8.0.31'
+        implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+        annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+        annotationProcessor "com.querydsl:querydsl-apt:5.0.0:jakarta"
     }
 
     test {

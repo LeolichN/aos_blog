@@ -1,4 +1,4 @@
-package com.aos.application.dto;
+package com.aos.repo.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;

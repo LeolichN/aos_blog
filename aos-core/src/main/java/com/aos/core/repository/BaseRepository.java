@@ -8,13 +8,12 @@ import org.springframework.data.repository.NoRepositoryBean;
 
 import java.util.List;
 
+
 @NoRepositoryBean
 public interface BaseRepository<T> extends JpaRepository<T, Integer>, QuerydslPredicateExecutor<T> {
-
     @Override
     List<T> findAll(Predicate predicate);
 
     @Override
     List<T> findAll(Predicate predicate, OrderSpecifier<?>... orders);
-
 }

@@ -1,6 +1,7 @@
 package com.aos.repo.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +15,14 @@ public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "group_id")
+    @NotNull
+    private Group group;
+
+    @Column(nullable = false)
+    private Boolean enable = true;
 
     @Column(length = 64, nullable = false, unique = true)
     private String name;

@@ -1,6 +1,7 @@
 package com.aos.core.config;
 
 import com.aos.core.repository.BaseRepository;
+import com.aos.core.repository.impl.BaseRepositoryImpl;
 import com.zaxxer.hikari.HikariDataSource;
 import org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,8 +26,10 @@ import java.util.Map;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(
-        repositoryBaseClass = BaseRepository.class,
-        basePackages = {"com.aos"})
+        repositoryBaseClass = BaseRepositoryImpl.class,
+        basePackages = {"com.aos"},
+        entityManagerFactoryRef = "entityManagerFactory",
+        transactionManagerRef = "transactionManager")
 public class DatasourceConfig {
 
     protected Map<String, Object> jpaProperties() {
