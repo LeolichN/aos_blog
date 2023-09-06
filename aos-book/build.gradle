@@ -65,6 +65,7 @@ configure(project(':book-repo')) {
 }
 
 configure(project('book-starter')) {
+    apply plugin: 'org.springframework.boot'
     dependencies {
         api project(':book-interface')
     }
