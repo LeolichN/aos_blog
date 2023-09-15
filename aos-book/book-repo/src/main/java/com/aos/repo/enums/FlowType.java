@@ -1,8 +1,8 @@
 package com.aos.repo.enums;
 
 public enum FlowType {
-    EXPENSE,
-    INCOME,
-    TRANSFER,
-    ADJUST
+  EXPENSE,
+  INCOME,
+  TRANSFER,
+  ADJUST
 }

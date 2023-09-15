@@ -12,19 +12,19 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class BookQueryDTO {
-    private Boolean enable;
-    private String name;
-    private Integer keep;
+  private Boolean enable;
+  private String name;
+  private Integer keep;
 
-    public Predicate buildPredicate(Group group) {
-        QBook book = QBook.book;
-        BooleanBuilder expression = new BooleanBuilder(book.group.eq(group));
-        if (enable != null) {
-            expression.and(book.enable.eq(enable));
-        }
-        if (name != null) {
-            expression.and(book.name.contains(name));
-        }
-        return expression;
+  public Predicate buildPredicate(Group group) {
+    QBook book = QBook.book;
+    BooleanBuilder expression = new BooleanBuilder(book.group.eq(group));
+    if (enable != null) {
+      expression.and(book.enable.eq(enable));
     }
+    if (name != null) {
+      expression.and(book.name.contains(name));
+    }
+    return expression;
+  }
 }

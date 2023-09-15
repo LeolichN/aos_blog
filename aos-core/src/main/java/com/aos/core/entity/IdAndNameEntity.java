@@ -11,8 +11,7 @@ import lombok.Setter;
 @Setter
 public abstract class IdAndNameEntity extends BaseEntity {
 
-    @Column(length = 64, nullable = false)
-    @NameField
-    private String name;
-
+  @Column(length = 64, nullable = false)
+  @NameField
+  private String name;
 }

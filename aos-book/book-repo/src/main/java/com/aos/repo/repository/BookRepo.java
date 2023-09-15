@@ -5,6 +5,4 @@ import com.aos.repo.entity.Book;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface BookRepo extends BaseRepository<Book> {
-
-}
+public interface BookRepo extends BaseRepository<Book> {}

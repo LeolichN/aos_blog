@@ -7,96 +7,91 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import java.math.BigDecimal;
+import java.util.Objects;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigDecimal;
-import java.util.Objects;
-
-
 @Entity
 @Table(name = "t_user_account")
-@Getter @Setter
+@Getter
+@Setter
 public class Account extends IdAndNameEntity {
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "group_id")
-    @NotNull
-    private Group group;
+  @ManyToOne(optional = false, fetch = FetchType.LAZY)
+  @JoinColumn(name = "group_id")
+  @NotNull
+  private Group group;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.ORDINAL)
-    @NotNull
-    private AccountType type;
+  @Column(nullable = false)
+  @Enumerated(EnumType.ORDINAL)
+  @NotNull
+  private AccountType type;
 
-    @Column(length = 1024)
-    @NotesField
-    private String notes;
+  @Column(length = 1024)
+  @NotesField
+  private String notes;
 
-    @Column(nullable = false)
-    @NotNull
-    private Boolean enable;
+  @Column(nullable = false)
+  @NotNull
+  private Boolean enable;
 
-    @Column(length = 32)
-    @AccountNoField
-    private String no;
+  @Column(length = 32)
+  @AccountNoField
+  private String no;
 
-    @Column(nullable = false)
-    @NotNull
-    @AmountField
-    private BigDecimal balance;
+  @Column(nullable = false)
+  @NotNull
+  @AmountField
+  private BigDecimal balance;
 
-    @Column(nullable = false)
-    @NotNull
-    private Boolean include;
+  @Column(nullable = false)
+  @NotNull
+  private Boolean include;
 
-    @Column(nullable = false)
-    @NotNull
-    private Boolean canExpense;
+  @Column(nullable = false)
+  @NotNull
+  private Boolean canExpense;
 
-    @Column(nullable = false)
-    @NotNull
-    private Boolean canIncome;
+  @Column(nullable = false)
+  @NotNull
+  private Boolean canIncome;
 
-    @Column(nullable = false)
-    @NotNull
-    private Boolean canTransferFrom;
+  @Column(nullable = false)
+  @NotNull
+  private Boolean canTransferFrom;
 
-    @Column(nullable = false)
-    @NotNull
-    private Boolean canTransferTo;
+  @Column(nullable = false)
+  @NotNull
+  private Boolean canTransferTo;
 
-    @Column(nullable = false, length = 8)
-    @NotBlank
-    @AccountCurrencyCodeField
-    private String currencyCode;
+  @Column(nullable = false, length = 8)
+  @NotBlank
+  @AccountCurrencyCodeField
+  private String currencyCode;
 
-    @AmountField
-    private BigDecimal initialBalance;
+  @AmountField private BigDecimal initialBalance;
 
-    @AmountField
-    private BigDecimal creditLimit;
+  @AmountField private BigDecimal creditLimit;
 
-    @BillDayField
-    private Integer billDay;
+  @BillDayField private Integer billDay;
 
-    @Digits(integer = 4, fraction = 4)
-    private BigDecimal apr;
+  @Digits(integer = 4, fraction = 4)
+  private BigDecimal apr;
 
-    @Column(name="deleted", columnDefinition="bit(1) default 0")
-    private Boolean deleted = false;
+  @Column(name = "deleted", columnDefinition = "bit(1) default 0")
+  private Boolean deleted = false;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Account account = (Account) o;
-        return Objects.equals(getId(), account.getId());
-    }
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Account account = (Account) o;
+    return Objects.equals(getId(), account.getId());
+  }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId());
-    }
-
+  @Override
+  public int hashCode() {
+    return Objects.hash(getId());
+  }
 }

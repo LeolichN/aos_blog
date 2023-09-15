@@ -5,13 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.URL;
 
-@Getter@Setter
+@Getter
+@Setter
 public class BookAddDTO {
-    @NotBlank
-    private String name;
+  @NotBlank private String name;
 
-    private String notes;
+  private String notes;
 
-    @URL
-    private String previewUrl;
+  @URL private String previewUrl;
 }

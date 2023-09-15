@@ -1,13 +1,9 @@
 package com.aos.repo.enums;
 
 public enum CategoryType {
-    /**
-     * 花销
-     */
-    EXPENSE,
+  /** 花销 */
+  EXPENSE,
 
-    /**
-     * 收入
-     */
-    INCOME,
+  /** 收入 */
+  INCOME,
 }

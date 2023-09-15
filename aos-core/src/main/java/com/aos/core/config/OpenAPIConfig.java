@@ -7,10 +7,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class OpenAPIConfig {
-    @Bean
-    public OpenAPI apiInfo(){
+  @Bean
+  public OpenAPI apiInfo() {
 
-        return new OpenAPI()
-                .info( new Info().title("swaager文档"));
-    }
+    return new OpenAPI().info(new Info().title("swaager文档"));
+  }
 }

@@ -1,7 +1,7 @@
 buildscript {
     repositories {
-        maven{url 'https://maven.aliyun.com/repository/gradle-plugin'}
-        maven{ url 'https://maven.aliyun.com/nexus/content/groups/public'}
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
     }
 }
 
@@ -40,7 +40,7 @@ subprojects {
     apply plugin: 'io.spring.dependency-management'
 
     repositories {
-        maven{ url 'https://maven.aliyun.com/nexus/content/groups/public'}
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public' }
     }
 
     dependencies {

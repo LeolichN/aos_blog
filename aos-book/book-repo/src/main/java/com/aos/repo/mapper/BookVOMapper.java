@@ -8,7 +8,7 @@ import org.mapstruct.factory.Mappers;
 @Mapper
 public interface BookVOMapper {
 
-    BookVOMapper MAPPER = Mappers.getMapper(BookVOMapper.class);
+  BookVOMapper MAPPER = Mappers.getMapper(BookVOMapper.class);
 
-    BookVO toBookVO(Book book);
+  BookVO toBookVO(Book book);
 }
