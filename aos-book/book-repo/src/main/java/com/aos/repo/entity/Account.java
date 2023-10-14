@@ -1,6 +1,7 @@
 package com.aos.repo.entity;
 
 import com.aos.core.entity.IdAndNameEntity;
+import com.aos.core.validation.NotesField;
 import com.aos.repo.enums.AccountType;
 import com.aos.repo.validation.*;
 import jakarta.persistence.*;

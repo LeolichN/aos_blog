@@ -18,13 +18,13 @@ public class BookQueryDTO {
 
   public Predicate buildPredicate(Group group) {
     QBook book = QBook.book;
-    BooleanBuilder expression = new BooleanBuilder(book.group.eq(group));
-    if (enable != null) {
-      expression.and(book.enable.eq(enable));
-    }
-    if (name != null) {
-      expression.and(book.name.contains(name));
-    }
+    BooleanBuilder expression = new BooleanBuilder();//book.group.eq(group)
+//    if (enable != null) {
+//      expression.and(book.enable.eq(enable));
+//    }
+//    if (name != null) {
+//      expression.and(book.name.contains(name));
+//    }
     return expression;
   }
 }

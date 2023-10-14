@@ -2,8 +2,8 @@ package com.aos.repo.entity;
 
 import com.aos.core.entity.BaseEntity;
 import com.aos.core.validation.TitleField;
-import com.aos.repo.validation.NotesField;
-import com.aos.repo.validation.TimeField;
+import com.aos.core.validation.NotesField;
+import com.aos.core.validation.TimeField;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

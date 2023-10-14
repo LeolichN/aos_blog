@@ -8,4 +8,5 @@ include 'book-interface'
 include 'book-starter'
 
 includeBuild '../aos-core'
+includeBuild '../aos-auth'
 
