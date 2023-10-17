@@ -63,6 +63,11 @@ configure(project(':book-repo')) {
     test {
         useJUnitPlatform()
     }
+
+    tasks.withType(JavaCompile){
+        options.encoding = "UTF-8"
+    }
+
 }
 
 configure(project('book-starter')) {
@@ -74,4 +79,9 @@ configure(project('book-starter')) {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+
+tasks.withType(JavaCompile){
+    options.encoding = "UTF-8"
 }

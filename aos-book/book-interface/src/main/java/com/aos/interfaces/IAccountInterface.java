@@ -23,6 +23,9 @@ public interface IAccountInterface {
     @PostMapping
     BaseResponse handleAdd(@Valid @RequestBody AccountOperateDTO accountAddDTO);
 
+    @GetMapping("/all")
+    BaseResponse handleAll(AccountQueryDTO accountQueryDTO);
+
     @GetMapping("")
     PageResponse handleQuery(
             AccountQueryDTO form,

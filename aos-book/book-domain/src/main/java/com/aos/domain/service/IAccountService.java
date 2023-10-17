@@ -4,6 +4,7 @@ package com.aos.domain.service;
 import com.aos.repo.dto.AccountOperateDTO;
 import com.aos.repo.dto.AccountQueryDTO;
 import com.aos.repo.dto.AdjustBalanceAddDTO;
+import com.aos.repo.entity.Account;
 import com.aos.repo.vo.AccountVO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,4 +28,8 @@ public interface IAccountService {
     boolean delete(Integer id);
 
     boolean adjust(Integer id, AdjustBalanceAddDTO form);
+
+    List<AccountVO> queryAll(AccountQueryDTO accountQueryDTO);
+
+    Account findAccountById(Integer defaultExpenseAccountId);
 }

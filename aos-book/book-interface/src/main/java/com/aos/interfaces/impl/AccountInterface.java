@@ -33,6 +33,11 @@ public class AccountInterface implements IAccountInterface {
     }
 
     @Override
+    public BaseResponse handleAll(AccountQueryDTO accountQueryDTO) {
+        return accountApplication.all(accountQueryDTO);
+    }
+
+    @Override
     public PageResponse handleQuery(AccountQueryDTO form, Pageable page) {
         return accountApplication.query(form,page);
     }

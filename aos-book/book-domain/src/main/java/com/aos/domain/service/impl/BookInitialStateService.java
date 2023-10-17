@@ -23,11 +23,13 @@ public class BookInitialStateService implements InitialStateService {
         User user = userService.getCurrentUser();
         initStateDTO.setUser(user.getId(),user.getUsername());
         Group group = groupService.getUserDefaultGroup(user);
-        GroupInitialState groupInitialState = new GroupInitialState();
-        groupInitialState.setId(group.getId());
-        groupInitialState.setDefaultCurrencyCode(group.getDefaultCurrencyCode());
-        groupInitialState.setName(group.getName());
-        initStateDTO.putOtherStates("group", groupInitialState);
+        if (group != null) {
+            GroupInitialState groupInitialState = new GroupInitialState();
+            groupInitialState.setId(group.getId());
+            groupInitialState.setDefaultCurrencyCode(group.getDefaultCurrencyCode());
+            groupInitialState.setName(group.getName());
+            initStateDTO.putOtherStates("group", groupInitialState);
+        }
         return initStateDTO;
     }
 }

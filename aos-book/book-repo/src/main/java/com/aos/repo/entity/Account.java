@@ -14,13 +14,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "t_user_account")
+@Table(name = "t_account")
 @Getter
 @Setter
 public class Account extends IdAndNameEntity {
 
   @ManyToOne(optional = false, fetch = FetchType.LAZY)
-  @JoinColumn(name = "group_id")
+  @JoinColumn(name = "group_id",foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+//  @JoinTable(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT),inverseForeignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
   @NotNull
   private Group group;
 

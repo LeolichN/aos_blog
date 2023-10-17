@@ -19,5 +19,7 @@ public interface AccountMapper {
     @Mapping(target = "initialBalance",source = "balance")
     @Mapping(target = "balance",source = "balance")
     @Mapping(target = "enable",constant = "true")
+    @Mapping(target = "group",ignore = true)
+    @Mapping(target = "deleted",ignore = true)
     Account toAccount(AccountOperateDTO accountAddDTO);
 }

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 public interface IBookInterface {
 
   @PostMapping("")
-  DataResponse<Book> handleAdd(@Valid @RequestBody BookOperateDTO bookAddDTO);
+  BaseResponse handleAdd(@Valid @RequestBody BookOperateDTO bookAddDTO);
 
   @GetMapping("/{id}")
   DataResponse<BookVO> handleGet(@PathVariable("id") Integer id);

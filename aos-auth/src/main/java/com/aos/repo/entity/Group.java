@@ -10,7 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "t_user_group")
+@Table(name = "t_group")
 @Getter
 @Setter
 public class Group extends IdAndNameEntity {
@@ -24,6 +24,7 @@ public class Group extends IdAndNameEntity {
   private Boolean enable = true;
 
   @OneToOne(optional = true, fetch = FetchType.LAZY)
+  @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
   private User creator;
 
   @OneToMany(

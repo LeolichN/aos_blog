@@ -1,5 +1,6 @@
 package com.aos.repo.entity;
 
+import com.aos.core.entity.IdAndNameEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import java.util.List;
@@ -10,49 +11,48 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "t_book")
-public class Book {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+public class Book extends IdAndNameEntity {
 
   @ManyToOne(optional = false, fetch = FetchType.LAZY)
-  @JoinColumn(name = "group_id")
+  @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+//  @JoinTable(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT),inverseForeignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
   @NotNull
   private Group group;
+
+  @Column(length = 1024)
+  private String notes;
 
   @Column(nullable = false)
   private Boolean enable = true;
 
-  @Column(length = 64, nullable = false, unique = true)
-  private String name;
+  @ManyToOne(optional = true, fetch = FetchType.EAGER)
+  @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+  private Account defaultExpenseAccount;
 
-  @Column(length = 4096)
-  private String notes;
+  @ManyToOne(optional = true, fetch = FetchType.EAGER)
+  @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+  private Account defaultIncomeAccount;
 
-  @Column(length = 256, name = "preview_url")
-  private String previewUrl;
+  @ManyToOne(optional = true, fetch = FetchType.EAGER)
+  @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+  private Account defaultTransferFromAccount;
 
-  @Column(nullable = false)
-  private Boolean visible;
+  @ManyToOne(optional = true, fetch = FetchType.EAGER)
+  @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+  private Account defaultTransferToAccount;
 
-  @OneToMany(
-      mappedBy = "book",
-      cascade = CascadeType.ALL,
-      orphanRemoval = true,
-      fetch = FetchType.LAZY)
-  private List<Category> categories;
+  @OneToOne(optional = true, fetch = FetchType.EAGER)
+  @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+  private Category defaultExpenseCategory;
 
-  @OneToMany(
-      mappedBy = "book",
-      cascade = CascadeType.ALL,
-      orphanRemoval = true,
-      fetch = FetchType.LAZY)
-  private List<Payee> payees;
+  @OneToOne(optional = true, fetch = FetchType.EAGER)
+  @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+  private Category defaultIncomeCategory;
 
-  @OneToMany(
-      mappedBy = "book",
-      cascade = CascadeType.ALL,
-      orphanRemoval = true,
-      fetch = FetchType.LAZY)
-  private List<Tag> tags;
+  @Column(nullable = false, length = 8)
+  @NotNull
+  private String defaultCurrencyCode;
+
+  private Long exportAt;
+
 }

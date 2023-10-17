@@ -9,16 +9,18 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "t_user_category_relation")
+@Table(name = "t_category_relation")
 @Getter
 @Setter
 public class CategoryRelation extends BaseEntity {
 
   @ManyToOne(optional = false, fetch = FetchType.LAZY)
+  @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
   @NotNull
   private Category category;
 
   @ManyToOne(optional = false, fetch = FetchType.LAZY)
+  @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
   @NotNull
   private BalanceFlow balanceFlow;
 

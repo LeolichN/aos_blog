@@ -2,6 +2,7 @@ package com.aos.domain.service.impl;
 
 import com.aos.core.exception.FailureMessageException;
 import com.aos.core.exception.ItemExistsException;
+import com.aos.core.exception.ItemNotFoundException;
 import com.aos.domain.service.*;
 import com.aos.repo.dto.AccountOperateDTO;
 import com.aos.repo.dto.AccountQueryDTO;
@@ -25,6 +26,7 @@ import org.springframework.util.CollectionUtils;
 
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Component
 public class AccountService implements IAccountService {
@@ -190,6 +192,18 @@ public class AccountService implements IAccountService {
         flow.setConfirm(true);
         balanceFlowRepo.save(flow);
         return true;
+    }
+
+    @Override
+    public List<AccountVO> queryAll(AccountQueryDTO accountQueryDTO) {
+        Group group = groupService.getCurrentUserDefaultGroup();
+        List<Account> accounts = accountRepo.findAll(accountQueryDTO.buildPredicate(group));
+        return accounts.stream().map(account -> AccountMapper.MAPPER.toAccountVO(account)).collect(Collectors.toList());
+    }
+
+    @Override
+    public Account findAccountById(Integer id) {
+        return accountRepo.findById(id).orElseThrow(ItemNotFoundException::new);
     }
 
     private List<Account> getAssets(Group group) {

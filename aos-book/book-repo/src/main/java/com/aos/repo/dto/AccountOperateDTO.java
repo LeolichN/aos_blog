@@ -1,15 +1,8 @@
 package com.aos.repo.dto;
 
 import com.aos.core.validation.NameField;
-import com.aos.core.validation.NotesField;
 import com.aos.repo.enums.AccountType;
-import com.aos.repo.validation.AccountCurrencyCodeField;
-import com.aos.repo.validation.AccountNoField;
-import com.aos.repo.validation.AmountField;
-import com.aos.repo.validation.BillDayField;
-import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import lombok.Getter;
 import lombok.Setter;

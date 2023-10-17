@@ -22,4 +22,6 @@ public interface IAccountApplication {
     BaseResponse delete(Integer id);
 
     BaseResponse adjust(Integer id, AdjustBalanceAddDTO form);
+
+    DataResponse all(AccountQueryDTO accountQueryDTO);
 }

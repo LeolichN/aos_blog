@@ -20,7 +20,7 @@ public class BookInterface implements IBookInterface {
   @Autowired private IBookApplication bookApplication;
 
   @Override
-  public DataResponse<Book> handleAdd(BookOperateDTO bookOperateDTO) {
+  public BaseResponse handleAdd(BookOperateDTO bookOperateDTO) {
     return bookApplication.addBook(bookOperateDTO);
   }
 

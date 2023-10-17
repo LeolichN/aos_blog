@@ -1,5 +1,6 @@
 package com.aos.repo.entity;
 
+import com.aos.core.entity.IdAndNameEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,21 +9,23 @@ import lombok.Setter;
 @Table(name = "t_tag")
 @Setter
 @Getter
-public class Tag {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+public class Tag extends IdAndNameEntity {
 
   @ManyToOne(optional = false, fetch = FetchType.LAZY)
+  @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
   private Book book;
 
-  @Column(length = 64, nullable = false)
-  private String name;
-
-  @Column(length = 4096)
+  @Column(length = 1024)
   private String notes;
 
+  @Column(nullable = false)
+  private Boolean enable = true;
+
+  @Column(nullable = false)
+  private Integer level;
+
   @ManyToOne(optional = true, fetch = FetchType.LAZY)
+  @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
   private Tag parent;
 
   @Column(nullable = false)

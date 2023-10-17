@@ -8,19 +8,19 @@ import lombok.Setter;
 
 @Entity
 @Table(
-    name = "t_user_user_group_relation",
+    name = "t_user_group_relation",
     uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "group_id"})})
 @Getter
 @Setter
 public class UserGroupRelation extends BaseEntity {
 
   @ManyToOne(optional = false, fetch = FetchType.LAZY)
-  @JoinColumn(name = "user_id")
+  @JoinColumn(name = "user_id",foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
   @NotNull
   private User user;
 
   @ManyToOne(optional = false, fetch = FetchType.LAZY)
-  @JoinColumn(name = "group_id")
+  @JoinColumn(name = "group_id",foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
   @NotNull
   private Group group;
 

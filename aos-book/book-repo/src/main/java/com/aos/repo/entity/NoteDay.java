@@ -10,12 +10,13 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "t_user_note_day")
+@Table(name = "t_note_day")
 @Getter
 @Setter
 public class NoteDay extends BaseEntity {
 
   @ManyToOne(optional = false, fetch = FetchType.LAZY)
+  @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
   @NotNull
   private User user;
 

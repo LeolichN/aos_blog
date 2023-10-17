@@ -53,4 +53,9 @@ public class AccountApplication implements IAccountApplication {
     public BaseResponse adjust(Integer id, AdjustBalanceAddDTO form) {
         return new BaseResponse(accountService.adjust(id,form));
     }
+
+    @Override
+    public DataResponse all(AccountQueryDTO accountQueryDTO) {
+        return new DataResponse(accountService.queryAll(accountQueryDTO));
+    }
 }

@@ -15,7 +15,7 @@ import lombok.Setter;
 import org.hibernate.annotations.Proxy;
 
 @Entity
-@Table(name = "t_user_user")
+@Table(name = "t_user")
 @Getter
 @Setter
 @JsonIgnoreProperties(value={"hibernateLazyInitializer","handler", "fieldHandler"})

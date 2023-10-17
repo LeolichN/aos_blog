@@ -1,5 +1,6 @@
 package com.aos.repo.entity;
 
+import com.aos.core.entity.IdAndNameEntity;
 import com.aos.repo.enums.CategoryType;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -9,17 +10,11 @@ import lombok.Setter;
 @Table(name = "t_category")
 @Getter
 @Setter
-public class Category {
-
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+public class Category extends IdAndNameEntity {
 
   @ManyToOne(optional = false, fetch = FetchType.LAZY)
+  @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
   private Book book;
-
-  @Column(length = 64, nullable = false)
-  private String name;
 
   @Column(length = 4096)
   private String notes;
@@ -28,6 +23,10 @@ public class Category {
   @Enumerated(EnumType.ORDINAL)
   private CategoryType type;
 
+  @Column(nullable = false)
+  private Integer level;
+
   @ManyToOne(optional = true, fetch = FetchType.LAZY)
+  @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
   private Category parent;
 }

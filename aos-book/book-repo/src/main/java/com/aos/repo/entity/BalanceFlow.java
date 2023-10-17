@@ -15,12 +15,13 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "t_user_balance_flow")
+@Table(name = "t_balance_flow")
 @Getter
 @Setter
 public class BalanceFlow extends BaseEntity {
 
   @ManyToOne(optional = false, fetch = FetchType.LAZY)
+  @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
   @NotNull
   private Book book;
 
@@ -37,6 +38,7 @@ public class BalanceFlow extends BaseEntity {
   @AmountField private BigDecimal convertedAmount;
 
   @ManyToOne(fetch = FetchType.LAZY, optional = true)
+  @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
   private Account account;
 
   @Column(nullable = false)
@@ -53,10 +55,12 @@ public class BalanceFlow extends BaseEntity {
   private String notes; // 备注
 
   @ManyToOne(optional = false, fetch = FetchType.LAZY)
+  @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
   @NotNull
   private User creator;
 
   @ManyToOne(optional = false, fetch = FetchType.LAZY)
+  @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
   @NotNull
   private Group group;
 
@@ -68,9 +72,11 @@ public class BalanceFlow extends BaseEntity {
   private Set<TagRelation> tags = new HashSet<>();
 
   @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
   private Account to;
 
   @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
   private Payee payee;
 
   @Column(nullable = false)

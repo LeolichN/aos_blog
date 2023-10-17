@@ -45,7 +45,7 @@ public class DatasourceConfig {
   }
 
   @Primary
-  @Bean
+  @Bean(name = "datasource")
   @ConfigurationProperties("spring.datasource.configuration")
   public DataSource dataSource() {
     return dataSourceProperties()
